@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is all about Javascript</title>
+</head>
+<body>
+	<h1>Scientific,BMI Calculator all in one</h1>
+<div><strong>Calculator With Some function</strong></div>
+<table border="1">
+<tr>
+<td><center><input type="button" value="c" onclick="clr()"/></center> </td>
+<td colspan="3"><input type="text" id="display" readonly="" /></td>
+<!-- clr() function will call clr to clear all value -->
+</tr>
+<tr>
+<!-- creating buttons and assigning values-->
+<td><center><input type="button" value="+" onclick="dis('+')"/></center></td>
+<td><center><input type="button" value="1" onclick="dis('1')"/></center></td>
+<td><center><input type="button" value="2" onclick="dis('2')"/></center></td>
+<td><center><input type="button" value="3" onclick="dis('3')"/></center></td>
+</tr>
+<tr>
+<td><center><input type="button" value="-" onclick="dis('-')"/></center></td>
+<td><center><input type="button" value="4" onclick="dis('4')"/></center></td>
+<td><center><input type="button" value="5" onclick="dis('5')"/></center></td>
+<td><center><input type="button" value="6" onclick="dis('6')"/></center></td>
+</tr>
+<tr>
+<td><center><input type="button" value="*" onclick="dis('*')"/></center></td>
+<td><center><input type="button" value="7" onclick="dis('7')"/></center></td>
+<td><center><input type="button" value="8" onclick="dis('8')"/></center></td>
+<td><center><input type="button" value="9" onclick="dis('9')"/></center></td>
+</tr>
+<tr>
+<td><center><input type="button" value="/" onclick="dis('/')"/></center></td>
+<td><center><input type="button" value="." onclick="dis('.')"/></center></td>
+<td><center><input type="button" value="0" onclick="dis('0')"/></center></td>
+<td><center><input type="button" value="Exp" onclick="exponential()"/></center></td>
+
+</tr>
+<tr>
+<td><center><input type="button" value="3√x" onclick="cube_root()"/></center></td>
+<td><center><input type="button" value="√x" onclick="sqr_root()"/></center></td>
+<td><center><input type="button" value="log(​x)" onclick="log()"/></center></td>
+<td><center><input type="button" value="PI" onclick="document.getElementById('display').value=Math.PI;"/></center></td>
+</tr>
+<tr>
+<td><center><input type="button" value="cos()" onclick="cos()"/></center></td>
+<td><center><input type="button" value="sin()" onclick="sin()"/></center></td>
+<td><center><input type="button" value="tan()" onclick="tan()"/></center></td>
+<td><center><input type="button" value="=" onclick="solve()"/></center></td>
+</tr>
+</table>
+<p></p>
+<div>
+	<strong>BMI Calculator</strong>
+	<br>
+	Weight in KG<br>
+	<input type="number" id="weight">
+	<br>
+	Height in cm<br>
+	<input type="number" id="height"><br>
+	<input type="button" value="Calculate BMI" onclick="bmi()"/>
+	<br><input type="number" id="bmi" readonly=""> <input type="text" id="bmi_result" readonly="">
+</div>
+</body>
+<script>
+//function to display value on screen
+function dis(val){
+	document.getElementById("display").value += val;
+}
+function solve(){
+	let x = document.getElementById("display").value;
+	document.getElementById("display").value = eval(x);
+}
+function clr(){
+	document.getElementById("display").value = '';
+}
+function exponential(){
+	let x = document.getElementById("display").value;
+	document.getElementById("display").value = Math.exp(x);
+}
+function cos(){
+	let x = document.getElementById("display").value;
+	document.getElementById("display").value = Math.cos(x);
+}
+function sin(){
+	let x = document.getElementById("display").value;
+	document.getElementById("display").value = Math.sin(x);
+}
+function tan(){
+	let x = document.getElementById("display").value;
+	document.getElementById("display").value = Math.tan(x);
+}
+function log(){
+	let x = document.getElementById("display").value;
+	document.getElementById("display").value = Math.log10(x);
+}
+function cube_root(){
+	let x = document.getElementById("display").value;
+	document.getElementById("display").value = Math.cbrt(x);
+}
+function sqr_root(){
+	let x = document.getElementById("display").value;
+	document.getElementById("display").value = Math.sqrt(x);
+}
+function bmi(){
+	let weight = document.getElementById('weight').value;
+	let height = document.getElementById('height').value/100;
+	let bmi = weight/Math.pow(height,2);
+	console.log(height);
+	if(bmi>0){
+	  document.getElementById('bmi').value = bmi;
+	}
+	if(bmi<18.5 && bmi>0){
+		document.getElementById('bmi_result').value = 'Underweight';
+	}
+	if(bmi<24.9 && bmi>=18.5){
+		document.getElementById('bmi_result').value = 'Normal weight';
+	}
+	if(bmi<29.9 && bmi>=24.9){
+		document.getElementById('bmi_result').value = 'Overweight';
+	}
+	if(bmi>=29.9){
+		document.getElementById('bmi_result').value = 'Obisity';
+	}
+}
+</script>
+</html>
